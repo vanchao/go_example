@@ -15,10 +15,10 @@ func main() {
 
 	var readOps uint64 = 0
 	var writeOps uint64 = 0
+	var total int = 0
 
 	for r := 0; r < 100; r++ {
 		go func() {
-			total := 0
 			for {
 				key := rand.Intn(5)
 				mutex.Lock()
@@ -55,5 +55,6 @@ func main() {
 
 	mutex.Lock()
 	fmt.Println("state:", state)
+	fmt.Println("total:", total)
 	mutex.Unlock()
 }
